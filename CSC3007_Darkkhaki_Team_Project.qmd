@@ -1,0 +1,10 @@
+---
+title: "P3 Darkkhaki"
+author: "Zhang XiangHui, Lin WeiChen, Priscilla Thung, Tang Guan You, Arshad Bin Mazlan, Wong Jing Yong Shawn"
+format: html
+editor: visual
+---
+
+# **1  Introduction**
+
+## 1.1 Data and Library Import
