@@ -1,5 +1,5 @@
 ---
-title: Visualizing Measles Incidence in the USA (1928--2001)
+title: The Rise of Virtual Kitchens (2019--2023)
 format:
   poster-typst: 
     size: "33x23" # Approximately A1
@@ -39,13 +39,21 @@ kitchens, also known as ghost kitchens or cloud kitchens. These
 innovative culinary ventures have gained significant traction, reshaping
 the landscape of food service.
 
-Virtual kitchens are commercial cooking facilities that prepare food
-solely for delivery or takeout, without the traditional dine-in option.
-Unlike conventional restaurants, virtual kitchens often operate multiple
-brands or menus from a single location, optimizing efficiency and
-catering to diverse consumer preferences. This model leverages modern
-technology, including advanced logistics and digital platforms, to
-streamline operations and enhance customer experience.
+Virtual restaurants in this context means that the restaurant is only
+available for pickup/delivery and there’s no dine in option. They are
+“ghost restaurants”, there is no place to walk up to, no signage, no
+seating. These restaurants operate out of commercial warehouses or
+trailers. And people usually patronize these virtual restaurants through
+delivery apps due to the restaurant names, and attractive images.[^1]
+
+[^1]: https://academy.getbackbar.com/understanding-the-concept-of-virtual-restaurants
+
+The significance of virtual kitchens extends beyond mere convenience.
+They represent a fundamental shift in how food is produced and consumed.
+In this project, we aim to improve the previous visualizations and
+provide a comprehensive overview on how virtual kitchens have expanded
+across the various states and transform the food industry, encouraging
+consumers and restaurateurs to adapt to and embrace this new model.
 
 # Previous Visualization
 
@@ -60,28 +68,33 @@ include_graphics("images/Explosion_of_virtual_restaurants.png")
 ```{r}
 #| label: fig-percentage-of-virtual-restaurants-in-a-city
 #| fig-cap: "Percentage of restaurant listings in a city."
-#| out-width: 80%
+#| out-width: 90%
 
 include_graphics("images/Virtual_restaurants_near_you.png")
 ```
 
 # Strengths
 
--   The visualisations used in the article are clear and easy to
-    understand.
+-   The visualisation used in the article emphasises the increase in the
+    number of virtual restaurants listed on Uber Eats from 2019 to 2023.
+-   The visualisation also highlights the top 12 cities with the highest
+    percentage of virtual restaurants.
 
 # Suggested Improvements
 
 1.  *Add a plot title and a source note* so that the figure can be
     understood in isolation (e.g., when shared on social media).
-2.  *Include statistics every state.* Statistics will help readers get
-    an overview of the virtual restaurants in each state and understand
-    the data better.
-3.  *Use a discrete color palette.* Continuous palettes can make it
-    challenging for humans to detect patterns below just noticeable
-    color differences.
-4.  *Using a heatmap.* A heatmap can help readers identify patterns in
-    the data more easily.
+2.  *Identify missing data.* Identifying missing data can help readers
+    understand the limitations of the visualization.
+3.  *Adding a legend.* A legend can help readers understand the
+    visualization more easily.
+4.  *Include statistics for every state.* Statistics will help readers
+    get an overview of the virtual restaurants in each state.
+5.  *Using a heatmap.* A heatmap can help readers visualize the
+    distribution of virtual restaurants in different states more
+    effectively.
+6.  *Having a mulitple heatmaps.* Multiple heatmaps can help readers
+    compare the number of virtual restaurant over the years.
 
 # Implementation
 
@@ -110,9 +123,9 @@ along with the following third-party packages:
 
 # Further Suggestions for Interactivity
 
-
-
 # Conclusion
 
-
-
+We have implemented the suggested improvements to the visualization. By
+using a heatmap, it ensures that the data is much more easily understood
+as readers can identify areas with a higher percentage of virtual
+kitchens and get an overview of the distribution of virtual kitchens.
