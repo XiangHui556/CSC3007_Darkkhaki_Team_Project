@@ -8,3 +8,101 @@ editor: visual
 # **1  Introduction**
 
 ## 1.1 Data and Library Import
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+library(patchwork)
+library(tmap)
+library(sf)
+library(mapview)
+library(rmapshaper)
+library(readxl)
+library(scales)
+library(usmap)
+```
+
+## 1.2 Data Import and Cleaning
+```{r}
+# Read the CSV file and remove all address with NA
+restaurants <- read_csv("updated_restaurant_list.csv") |>
+  drop_na(full_address)
+
+# Extract the state abbreviation using a regular expression and clean it up
+restaurants <- restaurants %>%
+  mutate(state = str_extract(full_address, ",\\s*([A-Z]{2})\\s*,") %>% 
+                   str_replace_all("^,\\s*|\\s*,$", ""))
+
+# Select the state and Year Partnered columns
+filtered_restaurants <- restaurants %>%
+  select(id, state, `Year Partnered`)
+
+# Remove all records with empty state
+filtered_restaurants <- filtered_restaurants |>
+  drop_na(state)
+
+filtered_restaurants
+
+# Check for NA rows
+#na_count <- sum(is.na(filtered_restaurants$state))
+#na_count
+
+# Print records with NA in the state column
+#records_with_na <- filtered_restaurants %>%
+#  filter(is.na(state))
+#records_with_na
+```
+
+## 1.3 Group each state by the number of restaurants for each year
+```{r}
+# Group the data by state and year
+grouped_restaurants <- filtered_restaurants |>
+  group_by(state, `Year Partnered`) |>
+  summarise(count = n())
+
+grouped_restaurants
+
+
+```
+
+## 1.4 Percentage increase after each year
+```{r}
+# Calculate the percentage increase after each year
+grouped_restaurants <- grouped_restaurants |>
+  group_by(state) |>
+  mutate(percentage_increase = (count - lag(count)) / lag(count) * 100)
+
+grouped_restaurants
+
+```
+
+## 1.5 Map visualisation of USA
+```{r}
+#data(World)
+#ggplot(World, aes(fill = continent)) + geom_sf()
+
+#zaf <-
+#  filter(World, name == "United States")
+#ggplot(zaf) + geom_sf(fill = "lightgreen")
+
+# Prepare the latest year's percentage increase for each state
+latest_year_data <- grouped_restaurants %>%
+  group_by(state) %>%
+  filter(`Year Partnered` == max(`Year Partnered`)) %>%
+  ungroup()
+
+# Plotting the US map with the percentage increase
+plot_usmap(data = latest_year_data, values = "percentage_increase", color = "white", labels = TRUE) +
+  scale_fill_continuous(low = "white", high = "red", name = "Percentage Increase", label = scales::comma) +
+  theme(legend.position = "right") +
+  labs(title = "Virtual restaurants percentage increase by State", subtitle = "2024 Percentage Increase")
+
+# Checking the states that are included in the data
+unique_states <- grouped_restaurants %>%
+  distinct(state)
+unique_states
+```
+
+
