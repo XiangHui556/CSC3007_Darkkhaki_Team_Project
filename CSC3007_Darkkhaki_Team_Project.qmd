@@ -95,7 +95,7 @@ latest_year_data <- grouped_restaurants %>%
 
 # Plotting the US map with the percentage increase
 plot_usmap(data = latest_year_data, values = "percentage_increase", color = "white", labels = TRUE) +
-  scale_fill_continuous(low = "white", high = "red", name = "Percentage Increase", label = scales::comma) +
+  scale_fill_continuous(low = "#fabb5c", high = "#a11902", na.value = "#f7cf92", name = "Percentage Increase", label = scales::comma) +
   theme(legend.position = "right") +
   labs(title = "Virtual restaurants percentage increase by State", subtitle = "2024 Percentage Increase")
 
