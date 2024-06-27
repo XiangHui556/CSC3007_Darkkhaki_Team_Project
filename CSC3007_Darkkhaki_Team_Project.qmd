@@ -97,7 +97,7 @@ latest_year_data <- grouped_restaurants %>%
 p <- plot_usmap(data = latest_year_data, values = "percentage_increase", color = "white", labels = TRUE) +
   scale_fill_continuous(low = "#fabb5c", high = "#a11902", na.value = "#f7cf92", name = "Percentage Increase", label = percent_format(scale=1)) +
   theme(legend.position = "right") +
-  labs(title = "Virtual restaurants percentage increase by State", subtitle = "2024 Percentage Increase")
+  labs(title = "Virtual restaurants percentage increase by State", subtitle = "2024 Percentage Increase", caption = "Source: ???")
 
 # Set label font size
 p$layers[[2]]$aes_params$size <- 2
