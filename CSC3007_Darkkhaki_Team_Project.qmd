@@ -27,7 +27,7 @@ library(usmap)
 ## 1.2 Data Import and Cleaning
 ```{r}
 # Read the CSV file and remove all address with NA
-restaurants <- read_csv("updated_restaurant_list.csv") |>
+restaurants <- read_csv("updated_restaurant_list_v2.csv") |>
   drop_na(full_address)
 
 # Extract the state abbreviation using a regular expression and clean it up
@@ -94,10 +94,15 @@ latest_year_data <- grouped_restaurants %>%
   ungroup()
 
 # Plotting the US map with the percentage increase
-plot_usmap(data = latest_year_data, values = "percentage_increase", color = "white", labels = TRUE) +
+p <- plot_usmap(data = latest_year_data, values = "percentage_increase", color = "white", labels = TRUE) +
   scale_fill_continuous(low = "#fabb5c", high = "#a11902", na.value = "#f7cf92", name = "Percentage Increase", label = scales::comma) +
   theme(legend.position = "right") +
   labs(title = "Virtual restaurants percentage increase by State", subtitle = "2024 Percentage Increase")
+
+# Set label font size
+p$layers[[2]]$aes_params$size <- 2
+
+p
 
 # Checking the states that are included in the data
 unique_states <- grouped_restaurants %>%
