@@ -35,7 +35,8 @@ library(ggplot2)
 The COVID-19 pandemic has transformed numerous industries, and the food
 and beverage sector is no exception. One of the most notable
 developments during this period has been the rapid growth of virtual
-kitchens, also known as ghost kitchens or cloud kitchens. These
+kitchens, also known as ghost kitchens or cloud kitchens, along with
+traditional restaurants that have added online ordering options. These
 innovative culinary ventures have gained significant traction, reshaping
 the landscape of food service.
 
@@ -48,35 +49,35 @@ delivery apps due to the restaurant names, and attractive images.[^1]
 
 [^1]: https://academy.getbackbar.com/understanding-the-concept-of-virtual-restaurants
 
-The significance of virtual kitchens extends beyond mere convenience.
-They represent a fundamental shift in how food is produced and consumed.
-In this project, we aim to improve the previous visualizations and
-provide a comprehensive overview on how virtual kitchens have expanded
-across the various states and transform the food industry, encouraging
-consumers and restaurateurs to adapt to and embrace this new model.
+On the other hand, many traditional restaurants have adapted by
+integrating online ordering systems, allowing customers to place orders
+through their websites, mobile apps, or third-party delivery platforms.
+This hybrid model offers both online and offline ordering capabilities,
+expanding their reach and providing greater convenience to their
+customers.
+
+The significance of both virtual kitchens and traditional restaurants
+with online ordering extends beyond mere convenience. They represent a
+fundamental shift in how food is produced and consumed. In this project,
+we aim to improve the previous visualizations and provide a
+comprehensive overview of how virtual kitchens and
+online-ordering-enabled restaurants have expanded across various states.
+This transformation of the food industry encourages consumers and
+restaurateurs to adapt to and embrace these new models.
 
 # Previous Visualization
 
 ```{r}
-#| label: fig-number-of-virtual-restaurants
-#| fig-cap: "Number of virtual restaurants listed on Uber Eats from 2019 to 2023."
-#| out-width: 100%
-
-include_graphics("images/Explosion_of_virtual_restaurants.png")
-```
-
-```{r}
 #| label: fig-percentage-of-virtual-restaurants-in-a-city
 #| fig-cap: "Percentage of restaurant listings in a city."
-#| out-width: 90%
+#| out-width: 100%
 
 include_graphics("images/Virtual_restaurants_near_you.png")
 ```
 
 # Strengths
 
--   The visualisation used in the article emphasises the increase in the
-    number of virtual restaurants listed on Uber Eats from 2019 to 2023.
+-   The visualisation is clear and easy to understand.
 -   The visualisation also highlights the top 12 cities with the highest
     percentage of virtual restaurants.
 
@@ -93,8 +94,6 @@ include_graphics("images/Virtual_restaurants_near_you.png")
 5.  *Using a heatmap.* A heatmap can help readers visualize the
     distribution of virtual restaurants in different states more
     effectively.
-6.  *Having a mulitple heatmaps.* Multiple heatmaps can help readers
-    compare the number of virtual restaurant over the years.
 
 # Implementation
 
