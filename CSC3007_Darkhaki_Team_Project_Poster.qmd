@@ -87,21 +87,23 @@ include_graphics("images/Virtual_restaurants_near_you.png")
     understood in isolation (e.g., when shared on social media).
 2.  *Identify missing data.* Identifying missing data can help readers
     understand the limitations of the visualization.
-3.  *Adding a legend.* A legend can help readers understand the
+3.  *Having consistency in labels.* Consistency can help readers understand the
     visualization more easily.
-4.  *Include statistics for every state.* Statistics will help readers
-    get an overview of the virtual restaurants in each state.
-5.  *Using a heatmap.* A heatmap can help readers visualize the
-    distribution of virtual restaurants in different states more
+4.  *Adding a legend.* A legend can help readers understand the
+    visualization more easily while reducing misinterpretation of the visualisation.
+5.  *Include statistics for every state.* Statistics will help readers
+    get an overview of the restaurants across the country .
+6.  *Using a heatmap.* A heatmap can help readers visualize the
+    distribution of restaurants in different states more
     effectively.
 
 # Implementation
 
 ## Data
 
--   The data used in this visualisation was obtained from Kaggle [^uber_eats_usa_data], that was scraped from Uber Eats[^uber_eats]. The dataset contains information on the number of restaurants and important data such as name, full address, lat, long.
+-   The data used in this visualisation was obtained from Kaggle [^uber_eats_usa_data], that was scraped from Uber Eats[^uber_eats]. This dataset contains information on the number of restaurants and important data such as name, full address, lat, long.
 
-- However, for the purposes of the visualisation, since there was no data available for the inception of virtual kitchens in each state, we have randomly generated data for the years 2019 to 2023.
+-   However, for the purposes of the visualisation, since there was no data available for the inception of virtual kitchens in each state, we have randomly generated data for the years 2019 to 2023.
 
 [^uber_eats_usa_data]: <https://www.kaggle.com/datasets/ahmedshahriarsakib/uber-eats-usa-restaurants-menus?resource=download&select=restaurants.csv>
 [^uber_eats]: <https://www.ubereats.com>
@@ -115,6 +117,7 @@ along with the following third-party packages:
 -   *tidyverse* for data transformation, including *ggplot2* for
     visualization based on the grammar of graphics
 -   *knitr* for dynamic document generation
+-   *usmap* for plotting the US map
 
 ```{=typst}
 #v(2em)
@@ -122,7 +125,11 @@ along with the following third-party packages:
 # Improved Visualization
 
 ```{r}
+#| label: fig-heatmap-virtual-online-restaurants
+#| fig-cap: "Heatmap of virtual and online restaurants."
+#| out-width: 100%
 
+include_graphics("images/Updated_graph.png")
 ```
 
 # Further Suggestions for Interactivity
