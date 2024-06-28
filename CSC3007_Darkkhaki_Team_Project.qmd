@@ -89,30 +89,72 @@ grouped_restaurants
 ## 1.5 Map visualisation of USA
 
 ```{r}
-#data(World)
-#ggplot(World, aes(fill = continent)) + geom_sf()
 
-#zaf <-
-#  filter(World, name == "United States")
-#ggplot(zaf) + geom_sf(fill = "lightgreen")
-
-# Prepare the latest year's percentage increase for each state
+# Prepare the latest year's percentage increase for each state add color column to store the color of the text
 latest_year_data <- grouped_restaurants %>%
   group_by(state) %>%
   filter(`Year Partnered` == max(`Year Partnered`)) %>%
   ungroup()
 
+# Get centroids for each state
+centroid_labels <- usmapdata::centroid_labels("states")
+
+# Rename the column in centroid_labels to match latest_year_data
+centroid_labels <- centroid_labels %>%
+  rename(state = abbr)
+
+# Join centroids to data
+state_labels <- merge(latest_year_data, centroid_labels, by = "state")
+
+# Extract x and y coordinates from geom column using stringr and add 2 new column lon and lat (state_labels is used for plotting the label of the states with data)
+state_labels <- state_labels %>%
+  mutate(
+    lon_lat = str_extract_all(geom, "-?\\d+\\.?\\d*"),
+    lon = as.numeric(sapply(lon_lat, function(x) x[1])),
+    lat = as.numeric(sapply(lon_lat, function(x) x[2]))
+  ) %>%
+  select(-lon_lat)
+
+# Extract x and y coordinates from geom column using stringr and add 2 new column lon and lat (centroid_labels is used for plotting the label of the states with no data)
+centroid_labels <- centroid_labels %>%
+  mutate(
+    lon_lat = str_extract_all(geom, "-?\\d+\\.?\\d*"),
+    lon = as.numeric(sapply(lon_lat, function(x) x[1])),
+    lat = as.numeric(sapply(lon_lat, function(x) x[2]))
+  ) %>%
+  select(-lon_lat)
+
+# missing_states is used for plotting the label of the states with no data
+all_states <- unique(centroid_labels$state)
+plotted_states <- unique(latest_year_data$state)
+missing_states <- setdiff(all_states, plotted_states)
+
+# Define a list of states with smaller areas (For a smaller size of the label text)
+small_area_states <- c("CT", "DE", "DC", "HI", "MD", "MA", "NH", "NJ", "RI", "VT")
+
 # Plotting the US map with the percentage increase
-p <- plot_usmap(data = latest_year_data, values = "percentage_increase", color = "white", labels = TRUE) +
-  scale_fill_continuous(low = "#fabb5c", high = "#a11902", na.value = "#f7cf92", name = "Percentage Increase", label = percent_format(scale=1)) +
+p <- plot_usmap(data = latest_year_data, values = "percentage_increase", color = "white", labels = FALSE) +
   theme(legend.position = "right") +
+  scale_fill_fermenter(palette = "Blues", name = "Percentage Increase", label = percent_format(scale=1), direction = 1) +
   labs(title = "Virtual restaurants percentage increase by State", subtitle = "2024 Percentage Increase", caption = "**Source**: Kaggle Dataset of Uber Eats USA Restaurants") +
   theme(
     plot.caption = element_markdown()
+  ) +
+  # First geom_text is used for plotting states with data
+  geom_text(data = state_labels, aes(
+    x = lon, y = lat,
+    label = state,
+  ), color = ifelse(is.na(state_labels$percentage_increase) | state_labels$percentage_increase <= 150, "black", "white"),
+  size = ifelse(state_labels$state %in% small_area_states, 1.5, 3)) +
+  # Second geom_text is used for plotting states with no data
+  geom_text(data = centroid_labels, aes(
+    x = lon, y = lat,
+    label = ifelse(state %in% missing_states, state, "")),
+    size = ifelse(centroid_labels$state %in% small_area_states, 1.5, 3), color = "gray"
   )
 
-# Set label font size
-p$layers[[2]]$aes_params$size <- 2
+# Set label font size for usmap library
+#p$layers[[2]]$aes_params$size <- 2
 
 p
 
