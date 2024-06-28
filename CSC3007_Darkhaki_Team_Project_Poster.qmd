@@ -100,7 +100,12 @@ include_graphics("images/Virtual_restaurants_near_you.png")
 
 ## Data
 
--   
+-   The data used in this visualisation was obtained from Kaggle [^uber_eats_usa_data], that was scraped from Uber Eats[^uber_eats]. The dataset contains information on the number of restaurants and important data such as name, full address, lat, long.
+
+- However, for the purposes of the visualisation, since there was no data available for the inception of virtual kitchens in each state, we have randomly generated data for the years 2019 to 2023.
+
+[^uber_eats_usa_data]: <https://www.kaggle.com/datasets/ahmedshahriarsakib/uber-eats-usa-restaurants-menus?resource=download&select=restaurants.csv>
+[^uber_eats]: <https://www.ubereats.com>
 
 ## Software
 
@@ -122,6 +127,13 @@ along with the following third-party packages:
 ```
 
 # Further Suggestions for Interactivity
+
+Due to the intention of the visualisation to be used in a poster, there are no interactive elements. However, if the visualisation were to be used in a digital format, the following interactive elements could be added:
+
+1.  *Hover-over information*: When hovering over a state, the user can see the number of virtual kitchens in that state.
+2.  *Filtering*: Users can filter the data by year to see how the number of virtual kitchens has changed over time.
+3.  *Zooming*: Users can zoom in on a specific region to see the number of virtual kitchens in more detail.
+4.  *Search*: Users can search for a specific state to see the number of virtual kitchens in that state.
 
 # Conclusion
 
