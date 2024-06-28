@@ -93,7 +93,7 @@ include_graphics("images/Virtual_restaurants_near_you.png")
     visualization more easily while reducing misinterpretation of the visualisation.
 5.  *Include statistics for every state.* Statistics will help readers
     get an overview of the restaurants across the country .
-6.  *Using a heatmap.* A heatmap can help readers visualize the
+6.  *Using a choropleth map.* A choropleth map can help readers visualize the
     distribution of restaurants in different states more
     effectively.
 
