@@ -103,8 +103,6 @@ include_graphics("images/Virtual_restaurants_near_you.png")
 
 -   The data used in this visualisation was obtained from Kaggle [^uber_eats_usa_data], that was scraped from Uber Eats[^uber_eats]. This dataset contains information on the number of restaurants and important data such as name, full address, lat, long.
 
--   However, for the purposes of the visualisation, since there was no data available for the inception of virtual kitchens in each state, we have randomly generated data for the years 2019 to 2023.
-
 [^uber_eats_usa_data]: <https://www.kaggle.com/datasets/ahmedshahriarsakib/uber-eats-usa-restaurants-menus?resource=download&select=restaurants.csv>
 [^uber_eats]: <https://www.ubereats.com>
 
