@@ -77,34 +77,43 @@ include_graphics("images/Virtual_restaurants_near_you.png")
 
 # Strengths
 
--   The visualisation is clear and easy to understand.
--   The visualisation also highlights the top 12 cities with the highest
-    percentage of virtual restaurants.
+-   The visualization is simple and straightforward to understand.
+-   It shows the top 12 cities with the highest percentage increase of
+    virtual restaurants, which allows the reader to understand the
+    cities that are in popularity for these virtual restaurants.
+-   Based on the data, you can really see the huge boom in popularity of
+    virtual restaurants over the years.
 
 # Suggested Improvements
 
-1.  *Add a plot title and a source note* so that the figure can be
+1.  *Add a plot title and a source note* so that figure 2 can be
     understood in isolation (e.g., when shared on social media).
-2.  *Identify missing data.* Identifying missing data can help readers
-    understand the limitations of the visualization.
-3.  *Having consistency in labels.* Consistency can help readers understand the
-    visualization more easily.
+2.  *Identify missing data.* The data should cover all cities in the
+    United States or in figure 1, all the years.
+3.  *Having consistency in labels.* Consistency in data annotation (the
+    percentage) can help readers understand the visualization more
+    easily.
 4.  *Adding a legend.* A legend can help readers understand the
-    visualization more easily while reducing misinterpretation of the visualisation.
+    visualization more easily while reducing misinterpretation of the
+    visualisation.
 5.  *Include statistics for every state.* Statistics will help readers
     get an overview of the restaurants across the country .
-6.  *Using a choropleth map.* A choropleth map can help readers visualize the
-    distribution of restaurants in different states more
+6.  *Using a choropleth map.* A choropleth map can help readers
+    visualize the distribution of restaurants in different states more
     effectively.
 
 # Implementation
 
 ## Data
 
--   The data used in this visualisation was obtained from Kaggle [^uber_eats_usa_data], that was scraped from Uber Eats[^uber_eats]. This dataset contains information on the number of restaurants and important data such as name, full address, lat, long.
+-   The data used in this visualisation was obtained from Kaggle [^2],
+    that was scraped from Uber Eats[^3]. This dataset contains
+    information on the number of restaurants and important data such as
+    name, full address, lat, long.
 
-[^uber_eats_usa_data]: <https://www.kaggle.com/datasets/ahmedshahriarsakib/uber-eats-usa-restaurants-menus?resource=download&select=restaurants.csv>
-[^uber_eats]: <https://www.ubereats.com>
+[^2]: <https://www.kaggle.com/datasets/ahmedshahriarsakib/uber-eats-usa-restaurants-menus?resource=download&select=restaurants.csv>
+
+[^3]: <https://www.ubereats.com>
 
 ## Software
 
@@ -127,17 +136,24 @@ along with the following third-party packages:
 #| fig-cap: "Heatmap of virtual and online restaurants."
 #| out-width: 100%
 
-include_graphics("images/Updated_graph.png")
+include_graphics("images/Percentage-increase-of-restaurants-in-US.png")
 ```
 
 # Further Suggestions for Interactivity
 
-Due to the intention of the visualisation to be used in a poster, there are no interactive elements. However, if the visualisation were to be used in a digital format, the following interactive elements could be added:
+Due to the intention of the visualisation to be used in a poster, there
+are no interactive elements. However, if the visualisation were to be
+used in a digital format, the following interactive elements could be
+added:
 
-1.  *Hover-over information*: When hovering over a state, the user can see the number of virtual kitchens in that state.
-2.  *Filtering*: Users can filter the data by year to see how the number of virtual kitchens has changed over time.
-3.  *Zooming*: Users can zoom in on a specific region to see the number of virtual kitchens in more detail.
-4.  *Search*: Users can search for a specific state to see the number of virtual kitchens in that state.
+1.  *Hover-over information*: When hovering over a state, the user can
+    see the number of virtual kitchens in that state.
+2.  *Filtering*: Users can filter the data by year to see how the number
+    of virtual kitchens has changed over time.
+3.  *Zooming*: Users can zoom in on a specific region to see the number
+    of virtual kitchens in more detail.
+4.  *Search*: Users can search for a specific state to see the number of
+    virtual kitchens in that state.
 
 # Conclusion
 
