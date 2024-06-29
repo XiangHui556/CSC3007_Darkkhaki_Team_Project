@@ -157,7 +157,7 @@ centroid_labels <- state_centroids %>%
 
 ```{r}
 # Define the breaks for the color scale
-breaks <- c(-100, 0, 50, 100, 200, 300)
+breaks <- c(-10, 0, 50, 100, 200, 300)
 
 # Plotting the US map with the percentage increase
 plot_usmap(data = filtered_data, values = "percentage_diff", color = "white") +
@@ -168,8 +168,7 @@ plot_usmap(data = filtered_data, values = "percentage_diff", color = "white") +
                        direction = 1) +
   labs(title = "Increase in virtual restaurants by State",
        subtitle = "between 2020 and 2023",
-       caption = "**Source**: Kaggle Dataset of Uber Eats USA Restaurants
-       and Github \"gsunit\" Uber Eats Scraping") +
+       caption = "Grey areas represent states that do not have data<br><br>**Source**: Kaggle Dataset of Uber Eats USA Restaurants and Github \"gsunit\" Uber Eats Scraping") +
   theme(
     plot.caption = element_markdown(),
     legend.title = element_text(size = 10, hjust = 0.5),
@@ -201,5 +200,5 @@ plot_usmap(data = filtered_data, values = "percentage_diff", color = "white") +
     panel.background = element_rect(fill = "aliceblue", color = NA),
     # Change the plot background color
     plot.background = element_rect(fill = "white", color = NA),
-  )
+  ) 
 ```
