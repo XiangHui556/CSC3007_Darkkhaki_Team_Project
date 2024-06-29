@@ -23,22 +23,19 @@ editor:
 #| include: false
 
 library(knitr)
-library(ggplot2)
 
-#To insert graphs
-#purl("measles_prep.qmd")
-#source("measles_prep.R")
 ```
 
 # Introduction
 
-The COVID-19 pandemic has transformed numerous industries, and the food
-and beverage sector is no exception. One of the most notable
-developments during this period has been the rapid growth of virtual
-kitchens, also known as ghost kitchens or cloud kitchens, along with
-traditional restaurants that have added online ordering options. These
-innovative culinary ventures have gained significant traction, reshaping
-the landscape of food service.
+The COVID-19 pandemic has profoundly transformed numerous industries,
+and the food and beverage sector is no exception. One of the most
+notable developments during this period has been the rapid growth of
+virtual kitchens, also known as ghost kitchens or cloud kitchens, along
+with traditional restaurants that have expanded their services to
+include online ordering options. These innovative culinary ventures have
+gained significant traction, reshaping the landscape of food service in
+unprecedented ways.
 
 Virtual restaurants in this context means that the restaurant is only
 available for pickup/delivery and there’s no dine in option. They are
@@ -49,28 +46,28 @@ delivery apps due to the restaurant names, and attractive images.[^1]
 
 [^1]: https://academy.getbackbar.com/understanding-the-concept-of-virtual-restaurants
 
-On the other hand, many traditional restaurants have adapted by
-integrating online ordering systems, allowing customers to place orders
-through their websites, mobile apps, or third-party delivery platforms.
-This hybrid model offers both online and offline ordering capabilities,
-expanding their reach and providing greater convenience to their
-customers.
+The significance of both virtual kitchens extends beyond mere
+convenience. They represent a fundamental shift in how food is produced,
+marketed, and consumed. These models offer increased flexibility and
+efficiency, allowing restaurateurs to minimize overhead costs associated
+with physical dining spaces while maximizing their reach through digital
+platforms. For consumers, the ease of access to a diverse range of
+cuisines from the comfort of their homes has revolutionized dining
+habits and preferences.
 
-The significance of both virtual kitchens and traditional restaurants
-with online ordering extends beyond mere convenience. They represent a
-fundamental shift in how food is produced and consumed. In this project,
-we aim to improve the previous visualizations and provide a
-comprehensive overview of how virtual kitchens and
-online-ordering-enabled restaurants have expanded across various states.
-This transformation of the food industry encourages consumers and
-restaurateurs to adapt to and embrace these new models.
+In this project, we aim to aim to improve the previous visualizations
+and provide a comprehensive overview of how virtual kitchens have
+expanded across various states. This transformation encourages both
+consumers and restaurateurs to adapt to and embrace these innovative
+approaches, paving the way for a more dynamic and resilient food service
+landscape.
 
 # Previous Visualization
 
 ```{r}
 #| label: fig-percentage-of-virtual-restaurants-in-a-city
 #| fig-cap: "Percentage of restaurant listings in a city."
-#| out-width: 100%
+#| out-width: 95%
 
 include_graphics("images/Virtual_restaurants_near_you.png")
 ```
@@ -106,25 +103,34 @@ include_graphics("images/Virtual_restaurants_near_you.png")
 
 ## Data
 
--   The data used in this visualisation was obtained from Kaggle [^2],
-    that was scraped from Uber Eats[^3]. This dataset contains
+-   The data used in this visualisation was obtained from Kaggle [^2] and GitHub [^3],
+    that was scraped from Uber Eats[^4]. The datasets contains
     information on the number of restaurants and important data such as
     name, full address, lat, long.
 
 [^2]: <https://www.kaggle.com/datasets/ahmedshahriarsakib/uber-eats-usa-restaurants-menus?resource=download&select=restaurants.csv>
 
-[^3]: <https://www.ubereats.com>
+[^3]: <https://github.com/gsunit/Extreme-Uber-Eats-Scraping/blob/master/1.5M-Uber-Eats-Restaurants.zip>
+
+[^4]: <https://www.ubereats.com>
+
+-   The data was cleaned and transformed to extract the state
+    abbreviation and the year partnered.
 
 ## Software
 
 We used the Quarto publication framework and the R programming language,
 along with the following third-party packages:
 
--   *readxl* for data import
+-   *dplyr* for data manipulation
 -   *tidyverse* for data transformation, including *ggplot2* for
     visualization based on the grammar of graphics
--   *knitr* for dynamic document generation
 -   *usmap* for plotting the US map
+-   *scales* for formatting the scales of the plot
+-   *sf* for spatial data manipulation
+-   *ggtext* for formatting text in the plot
+-   *stringr* for string manipulation
+-   *knitr* for dynamic document generation
 
 ```{=typst}
 #v(2em)
@@ -132,8 +138,8 @@ along with the following third-party packages:
 # Improved Visualization
 
 ```{r}
-#| label: fig-heatmap-virtual-online-restaurants
-#| fig-cap: "Heatmap of virtual and online restaurants."
+#| label: fig-percentage-increase-of-restaurants-in-US
+#| fig-cap: "Percentage increase of virtual kitchens in the United States."
 #| out-width: 100%
 
 include_graphics("images/Percentage-increase-of-restaurants-in-US.png")
