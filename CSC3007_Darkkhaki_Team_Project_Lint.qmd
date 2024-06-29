@@ -1,0 +1,26 @@
+---
+title: "P3 Darkkhaki"
+author: "Zhang XiangHui, Lin Weichen, Priscilla Thung, Tang Guan You, Arshad Bin Mazlan, Wong Jing Yong Shawn"
+date: "2024-06-29"
+format: html
+editor: visual
+---
+
+# Introduction
+
+## Load necessary packages
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+
+library(lintr)
+```
+
+## Use lint to check code quality
+
+```{r}
+#| message: false
+lint("./CSC3007_Darkkhaki_Team_Project_v3.qmd")
+```
