@@ -3,17 +3,20 @@ title: "P3 Darkkhaki"
 author: "Zhang XiangHui, Lin Weichen, Priscilla Thung, Tang Guan You, Arshad Bin Mazlan, Wong Jing Yong Shawn"
 date: "2024-06-29"
 format: html
-editor: visual
 ---
 
 # Introduction
 
-## Load necessary packages
+This document contains the data engineering required to contruct the US map with the percentage increase in virtual restaurants by state between 2020 and 2023. The data engineering includes data cleaning, transformation, grouping, merging, and preparing the data for plotting. The data engineering is done using R programming language.
+
+The code below requires the following packages:
 
 ```{r}
-#| label: setup
+#| label: library
+#| echo: false
 #| message: false
 #| warning: false
+#| results: "hide"
 
 library(dplyr)
 library(ggplot2)
@@ -25,37 +28,80 @@ library(ggtext)
 library(stringr)
 ```
 
-## Data cleaning and transformation
+# Data Cleaning and transformation
+
+The data cleaning and transformation process involves loading the data, extracting the state abbreviation, cleaning it up, selecting the required columns, adding a new column, grouping the data by state and year, calculating the percentage difference, and preparing the data for plotting.
+
+## Loading the data
+
+`restaurants_2020.csv` and `restaurants_2023.csv` are the two datasets used for this analysis. There are two columns in the `restaurants_2020.csv` dataset: `name` and `addressRegion`. 
+The `restaurants_2023.csv` dataset contains several columns: `id`, `position`, `name`, `score`, `ratings`, `category`, `price range`, `full_address`, `zip_code`, `lat`, `lng`.
+
+Therefore, data cleaning and transformation are required to prepare the data.
 
 ```{r}
-#| message: false
-
 # Load the restaurants 2020 data
-restaurants_2020 <- read_csv("restaurants_2020.csv") |>
+restaurants_2020 <- read_csv("restaurants_2020.csv", show_col_types = FALSE) |>
   drop_na(addressRegion)
 
 # Load the restaurants 2023 data
-restaurants_2023 <- read_csv("restaurants_2023.csv") |>
+restaurants_2023 <- read_csv("restaurants_2023.csv", show_col_types = FALSE) |>
   drop_na(full_address)
 
+# Display both datasets with head
+head(restaurants_2020)
+head(restaurants_2023)
+
+```
+## Cleaning the data
+
+Since `restaurants_2023` dataset contains the state abbreviation in the `full_address` column, we need to extract the state abbreviation using a regular expression and clean it up. We will then select the id, state and name columns and add a new column `Year Partnered` to the `restaurants_2023` dataset.
+
+This `year parterned` column will be used later to merge the two datasets and calculate the percentage difference.
+
+
+```{r}
 # Extract the state abbreviation using a regular expression and clean it up
-restaurants_2023 <- restaurants_2023 %>%
+extracted_restaurants_2023 <- restaurants_2023 %>%
   mutate(state = str_extract(full_address, ",\\s*([A-Z]{2})\\s*,") %>%
            str_replace_all("^,\\s*|\\s*,$", ""))
 
 # Select the state and Year Partnered columns
-restaurants_2023 <- restaurants_2023 %>%
+extracted_restaurants_2023 <- extracted_restaurants_2023 %>%
   select(id, state, name)
 
 # Add a year partnered column to the 2023 dataset
-restaurants_2023 <- restaurants_2023 %>%
+extracted_restaurants_2023 <- extracted_restaurants_2023 %>%
   mutate(`Year Partnered` = NaN)
+
+# Group the states and display the number of restaurants
+grouped_restaurants_2023 <- extracted_restaurants_2023 %>%
+  group_by(state) %>%
+  summarise(count = n())
+
+grouped_restaurants_2023
+
+```
+
+For comparison, group and display the restaurants_2020 by state as well.
+
+```{r}
+# Group the restaurants by state
+grouped_restaurants_2020 <- restaurants_2020 %>%
+  group_by(addressRegion) %>%
+  summarise(count = n())
+
+grouped_restaurants_2020
 ```
 
 ## Group the restaurants by state
 
+It is noticed that the `addressRegion` column in the `restaurants_2020` dataset is not named `state`. Therefore, we will rename the column to `state` and add a `Year Partnered` column to the `restaurants_2020` dataset.
+
+We will also add a `Year Partnered` column to the `extracted_restaurants_2023` dataset to indicate the year the restaurant was partnered with Uber Eats.
+
 ```{r}
-# Rename 2020 data addressRegion not state
+# Rename the addressRegion column to state for the 2020 dataset
 restaurants_2020 %>%
   rename(
     state = addressRegion
@@ -66,11 +112,18 @@ restaurants_2020 <- restaurants_2020 %>%
   mutate(Year_Partnered = 2020)
 
 # Add a Year Partnered column to the 2023 dataset
-filtered_restaurants <- restaurants_2023 %>%
+filtered_restaurants <- extracted_restaurants_2023 %>%
   mutate(`Year Partnered` = ifelse(name %in% restaurants_2020$name, 2020, 2023))
+
+# display filtered_restaurants with only state and year partnered columns
+filtered_restaurants <- filtered_restaurants %>%
+  select(state, `Year Partnered`)
+
 ```
 
 ## Merge the two datasets and calculate the percentage difference
+
+We merged the two datasets and then calculated the percentage difference between the number of restaurants in 2020 and 2023 for each state.
 
 ```{r}
 # Group the data by state and year
@@ -87,8 +140,10 @@ filtered_data <- grouped_restaurants |>
 
 filtered_data
 ```
+# Plotting
 
-## Prepare data for plotting
+The data is now ready for plotting. We will prepare the data for plotting by calculating the centroids for each state, adjusting the coordinates for Florida (FL) and Hawaii (HI), finding the missing states, defining a list of states with smaller areas, and preparing the state labels and centroid labels for plotting.
+
 
 ```{r}
 # Get state centroids for labeling
@@ -154,6 +209,8 @@ centroid_labels <- state_centroids %>%
 ```
 
 ## Plot the US map with percentage increase
+
+Finally, we plot the US map with the percentage increase in virtual restaurants by state between 2020 and 2023.
 
 ```{r}
 # Define the breaks for the color scale
