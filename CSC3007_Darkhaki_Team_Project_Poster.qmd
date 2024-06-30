@@ -7,7 +7,7 @@ format:
     departments: "Information and Communication Technologies"
     institution-logo: "./images/sit-logo.png"
     footer-text: "Information Visualization 2024"
-    #footer-emails: "michael.gastner@singaporetech.edu.sg"
+    footer-emails: "2101993, 2101642, 2101684, 2101672, 2101982, 2101229"
 execute:
   echo: false
 knitr:
