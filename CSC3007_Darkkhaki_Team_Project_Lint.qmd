@@ -22,5 +22,6 @@ library(lintr)
 
 ```{r}
 #| message: false
-lint("./CSC3007_Darkkhaki_Team_Project_v3.qmd")
+lint("./CSC3007_Darkkhaki_Team_Project_Data_Preparation.qmd")
+lint("./CSC3007_Darkhaki_Team_Project_Poster.qmd")
 ```

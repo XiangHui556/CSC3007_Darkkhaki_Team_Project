@@ -95,7 +95,11 @@ include_graphics("images/Virtual_restaurants_near_you.png")
 9.  *Bin the data.* Binning the data allows a range of values to be
     grouped together to simplify and clarify the visualization.\
 10. *Adding labels for each state.* To avoid overplotting, use
-    two-letter abbreviations instead of full state names
+    two-letter abbreviations instead of full state names.
+
+```{=typst}
+#v(3em)
+```
 
 # Implementation
 
@@ -120,8 +124,8 @@ We used the Quarto publication framework and the R programming language,
 along with the following third-party packages:
 
 -   *dplyr* for data manipulation
--   *tidyverse* for data transformation, including *ggplot2* for
-    visualization based on the grammar of graphics
+-   *tidyverse* for data transformation
+-   *ggplot2* for visualization based on the grammar of graphics
 -   *usmap* for plotting the US map
 -   *scales* for formatting the scales of the plot
 -   *sf* for spatial data manipulation
@@ -137,7 +141,7 @@ along with the following third-party packages:
 ```{r}
 #| label: fig-percentage-increase-of-restaurants-in-US
 #| fig-cap: "Percentage increase of virtual kitchens in the United States."
-#| out-width: 100%
+#| out-width: 125%
 
 include_graphics("images/Percentage-increase-of-restaurants-in-US.png")
 ```

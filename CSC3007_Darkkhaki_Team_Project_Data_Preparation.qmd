@@ -187,7 +187,7 @@ all_states <- unique(state_centroids$abbr)
 plotted_states <- unique(filtered_data$state)
 missing_states <- setdiff(all_states, plotted_states)
 
-# Define a list of states with smaller areas 
+# Define a list of states with smaller areas
 # (For a smaller size of the label text)
 small_area_states <- c("CT", "DE", "DC", "HI", "MD",
                        "MA", "NH", "NJ", "RI")
@@ -227,7 +227,9 @@ plot_usmap(data = filtered_data, values = "percentage_diff", color = "white") +
                        direction = 1) +
   labs(title = "Increase in virtual restaurants by State",
        subtitle = "between 2020 and 2023",
-       caption = "Grey areas represent states that do not have data<br><br>**Source**: Kaggle Dataset of Uber Eats USA Restaurants and Github \"gsunit\" Uber Eats Scraping") +
+       caption = "Grey areas represent states that do not have data<br><br>
+       **Source**: Kaggle Dataset of Uber Eats USA Restaurants and 
+       Github \"gsunit\" Uber Eats Scraping") +
   theme(
     plot.caption = element_markdown(),
     legend.title = element_text(size = 10, hjust = 0.5),
@@ -259,5 +261,5 @@ plot_usmap(data = filtered_data, values = "percentage_diff", color = "white") +
     panel.background = element_rect(fill = "aliceblue", color = NA),
     # Change the plot background color
     plot.background = element_rect(fill = "white", color = NA),
-  ) 
+  )
 ```
