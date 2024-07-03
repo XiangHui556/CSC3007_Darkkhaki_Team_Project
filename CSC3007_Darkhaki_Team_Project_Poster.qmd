@@ -31,11 +31,7 @@ library(knitr)
 The COVID-19 pandemic has profoundly transformed numerous industries,
 and the food and beverage sector is no exception. One of the most
 notable developments during this period has been the rapid growth of
-virtual kitchens, also known as ghost kitchens or cloud kitchens, along
-with traditional restaurants that have expanded their services to
-include online ordering options. These innovative culinary ventures have
-gained significant traction, reshaping the landscape of food service in
-unprecedented ways.
+virtual kitchens, also known as ghost kitchens or cloud kitchens.
 
 Virtual restaurants in this context means that the restaurant is only
 available for pickup/delivery and there’s no dine in option. They are
@@ -46,21 +42,13 @@ delivery apps due to the restaurant names, and attractive images.[^1]
 
 [^1]: https://academy.getbackbar.com/understanding-the-concept-of-virtual-restaurants
 
-The significance of both virtual kitchens extends beyond mere
-convenience. They represent a fundamental shift in how food is produced,
-marketed, and consumed. These models offer increased flexibility and
-efficiency, allowing restaurateurs to minimize overhead costs associated
-with physical dining spaces while maximizing their reach through digital
-platforms. For consumers, the ease of access to a diverse range of
-cuisines from the comfort of their homes has revolutionized dining
-habits and preferences.
-
-In this project, we aim to aim to improve the previous visualizations
-and provide a comprehensive overview of how virtual kitchens have
-expanded across various states. This transformation encourages both
-consumers and restaurateurs to adapt to and embrace these innovative
-approaches, paving the way for a more dynamic and resilient food service
-landscape.
+Virtual kitchens represent a significant shift in food production,
+marketing, and consumption by offering increased flexibility and
+efficiency. This transformation encourages both consumers and
+restaurateurs to embrace innovative approaches, fostering a dynamic and
+resilient food service landscape. This project aims to enhance previous
+visualizations and provide a comprehensive overview of the expansion of
+virtual kitchens across various states.
 
 # Previous Visualization
 
@@ -85,37 +73,46 @@ include_graphics("images/Virtual_restaurants_near_you.png")
 
 1.  *Add a plot title and a source note* so that figure 2 can be
     understood in isolation (e.g., when shared on social media).
-2.  *Identify missing data.* The data should cover all cities in the
-    United States or in figure 1, all the years.
+2.  *Identify missing data.* If data is missing, it should be clearly
+    indicated.
 3.  *Having consistency in labels.* Consistency in data annotation (the
     percentage) can help readers understand the visualization more
     easily.
 4.  *Adding a legend.* A legend can help readers understand the
     visualization more easily while reducing misinterpretation of the
-    visualisation.
+    visualization.
 5.  *Include statistics for every state.* Statistics will help readers
-    get an overview of the virtual restaurants across the country .
+    get an overview of the virtual restaurants across the country.
 6.  *Using a choropleth map.* A choropleth map can help readers
     visualize the distribution of restaurants in different states more
     effectively.
+7.  *Using a discrete color palette* Continuous palettes can make it
+    challenging for humans to detect patterns below just noticeable
+    color differences
+8.  *Using a sequential color palette.* A sequential color palette helps
+    convey a natural and intuitive sense of increasing or decreasing
+    magnitude.
+9.  *Bin the data.* Binning the data allows a range of values to be
+    grouped together to simplify and clarify the visualization.\
+10. *Adding labels for each state.* To avoid overplotting, use
+    two-letter abbreviations instead of full state names
 
 # Implementation
 
 ## Data
 
--   The data used in this visualisation was obtained from Kaggle [^2] and GitHub [^3],
-    that was scraped from Uber Eats[^4]. The datasets contains
-    information on the number of restaurants and important data such as
-    name, full address, lat, long.
+-   The data used in this visualisation was obtained from Kaggle [^2]
+    and GitHub [^3], that was scraped from Uber Eats[^4]. The datasets
+    contains information on the number of restaurants and important data
+    such as name, full address, lat, long.
+-   The data was cleaned and transformed to extract the state
+    abbreviation and the year partnered.
 
 [^2]: <https://www.kaggle.com/datasets/ahmedshahriarsakib/uber-eats-usa-restaurants-menus?resource=download&select=restaurants.csv>
 
 [^3]: <https://github.com/gsunit/Extreme-Uber-Eats-Scraping/blob/master/1.5M-Uber-Eats-Restaurants.zip>
 
 [^4]: <https://www.ubereats.com>
-
--   The data was cleaned and transformed to extract the state
-    abbreviation and the year partnered.
 
 ## Software
 
@@ -133,7 +130,7 @@ along with the following third-party packages:
 -   *knitr* for dynamic document generation
 
 ```{=typst}
-#v(2em)
+#v(6em)
 ```
 # Improved Visualization
 
@@ -147,8 +144,8 @@ include_graphics("images/Percentage-increase-of-restaurants-in-US.png")
 
 # Further Suggestions for Interactivity
 
-Due to the intention of the visualisation to be used in a poster, there
-are no interactive elements. However, if the visualisation were to be
+Due to the intention of the visualization to be used in a poster, there
+are no interactive elements. However, if the visualization were to be
 used in a digital format, the following interactive elements could be
 added:
 
@@ -164,6 +161,7 @@ added:
 # Conclusion
 
 We have implemented the suggested improvements to the visualization. By
-using a choropleth map, it ensures that the data is much more easily understood
-as readers can identify areas with a higher percentage of virtual
-kitchens and get an overview of the distribution of virtual kitchens.
+using a choropleth map, it ensures that the data is much more easily
+understood as readers can identify areas with a higher percentage of
+virtual kitchens and get an overview of the distribution of virtual
+kitchens.
