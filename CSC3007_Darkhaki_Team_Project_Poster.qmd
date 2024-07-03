@@ -1,5 +1,5 @@
 ---
-title: The Rise of Virtual Kitchens (2019--2023)
+title: The Rise of Virtual Kitchens (2020--2023)
 format:
   poster-typst: 
     size: "33x23" # Approximately A1
@@ -94,7 +94,7 @@ include_graphics("images/Virtual_restaurants_near_you.png")
     visualization more easily while reducing misinterpretation of the
     visualisation.
 5.  *Include statistics for every state.* Statistics will help readers
-    get an overview of the restaurants across the country .
+    get an overview of the virtual restaurants across the country .
 6.  *Using a choropleth map.* A choropleth map can help readers
     visualize the distribution of restaurants in different states more
     effectively.
@@ -164,6 +164,6 @@ added:
 # Conclusion
 
 We have implemented the suggested improvements to the visualization. By
-using a heatmap, it ensures that the data is much more easily understood
+using a choropleth map, it ensures that the data is much more easily understood
 as readers can identify areas with a higher percentage of virtual
 kitchens and get an overview of the distribution of virtual kitchens.
