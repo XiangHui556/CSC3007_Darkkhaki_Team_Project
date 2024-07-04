@@ -71,31 +71,26 @@ include_graphics("images/Virtual_restaurants_near_you.png")
 
 # Suggested Improvements
 
-1.  *Add a plot title and a source note* so that figure 2 can be
-    understood in isolation (e.g., when shared on social media).
-2.  *Identify missing data.* If data is missing, it should be clearly
-    indicated.
-3.  *Having consistency in labels.* Consistency in data annotation (the
-    percentage) can help readers understand the visualization more
-    easily.
-4.  *Adding a legend.* A legend can help readers understand the
-    visualization more easily while reducing misinterpretation of the
+1.  **Add a plot title and a source note:** Ease the               reader's understanding of the \
     visualization.
-5.  *Include statistics for every state.* Statistics will help readers
-    get an overview of the virtual restaurants across the country.
-6.  *Using a choropleth map.* A choropleth map can help readers
-    visualize the distribution of restaurants in different states more
-    effectively.
-7.  *Using a discrete color palette* Continuous palettes can make it
-    challenging for humans to detect patterns below just noticeable
-    color differences
-8.  *Using a sequential color palette.* A sequential color palette helps
-    convey a natural and intuitive sense of increasing or decreasing
-    magnitude.
-9.  *Bin the data.* Binning the data allows a range of values to be
-    grouped together to simplify and clarify the visualization.\
-10. *Adding labels for each state.* To avoid overplotting, use
-    two-letter abbreviations instead of full state names.
+2.  **Identify missing data:** If there are missing data, it       should be clearly indicated.
+3.  **Ensure consistency in labels:** Consistency in data          annotation (the percentage) can help \
+    readers understand the visualization easily.
+4.  **Add a legend:** A legend can help readers understand the
+    visualization easily while \
+    reducing misinterpretation of the visualization.
+5.  **Include statistics for every state:** Statistics will        help readers get an overview of the \
+    virtual restaurants across the country.
+6.  **Use a choropleth map:** A choropleth map can help readers
+    visualize the distribution of \
+    restaurants in different states more effectively.
+7.  **Use a sequential color palette:** A sequential color         palette helps convey a natural and \
+    intuitive sense of increasing or decreasing magnitude.
+8.  **Bin the data:** Binning the data allows a range of values     to be grouped together to simplify \
+    and clarify the visualization.\
+9. **Add labels for each state:** To avoid overplotting, use
+    two-letter abbreviations instead of \
+    full state names.
 
 ```{=typst}
 #v(3em)
@@ -105,10 +100,11 @@ include_graphics("images/Virtual_restaurants_near_you.png")
 
 ## Data
 
--   The data used in this visualisation was obtained from Kaggle [^2]
-    and GitHub [^3], that was scraped from Uber Eats[^4]. The datasets
-    contains information on the number of restaurants and important data
-    such as name, full address, lat, long.
+-   The data used in this visualisation was obtained from          Kaggle [^2]
+    and GitHub [^3], that was scraped \
+    from Uber Eats[^4]. 
+-   The datasets
+    contains information on the number of restaurants and          important data such as name, full address, lat, long.
 -   The data was cleaned and transformed to extract the state
     abbreviation and the year partnered.
 
